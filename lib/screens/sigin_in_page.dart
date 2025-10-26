@@ -6,7 +6,7 @@ import 'package:him_app/widgets/custom_text_field.dart';
 import 'package:him_app/widgets/switch_type_user.dart';
 
 class SiginPage extends StatefulWidget {
-  SiginPage({super.key});
+  const SiginPage({super.key});
 
   @override
   State<SiginPage> createState() => _SiginPageState();
@@ -47,7 +47,7 @@ class _SiginPageState extends State<SiginPage> {
                       width: 180,
                       height: 140,
                     ),
-                    Text(
+                    const Text(
                       "HIGHER INSTITUTE OF MANAGMENT",
                       style: TextStyle(
                         fontSize: 16,
@@ -55,20 +55,20 @@ class _SiginPageState extends State<SiginPage> {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 5),
-                    Text(
+                    const SizedBox(height: 5),
+                    const Text(
                       'Sign in to your account',
                       style: TextStyle(color: Colors.white70),
                     ),
-                    SizedBox(height: 30),
-                    Align(
+                    const SizedBox(height: 30),
+                    const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         'Select your role',
                         style: TextStyle(color: Colors.white70),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: SwitchTypeUser(
@@ -79,42 +79,42 @@ class _SiginPageState extends State<SiginPage> {
                         },
                       ),
                     ),
-                    SizedBox(height: 30),
-                    Align(
+                    const SizedBox(height: 30),
+                    const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         'Email Address',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     CustomTextField(
                       obscureText: showPass,
                       controller: emailController,
                       name: 'Enter your email',
                       iconData: Icons.email_outlined,
                     ),
-                    SizedBox(height: 30),
-                    Align(
+                    const SizedBox(height: 30),
+                    const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         'Password',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     CustomTextField(
                       obscureText: !showPass,
                       controller: passwordController,
                       name: 'Enter your password',
                       iconData: Icons.lock_outline,
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Align(
                       alignment: Alignment.topRight,
                       child: TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "Forget Password ?",
                           style: TextStyle(color: Colors.white70),
                         ),
@@ -125,9 +125,11 @@ class _SiginPageState extends State<SiginPage> {
                       height: 65,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [kscolor, Color(0xFF0083B0)],
+                          colors: [kscolor, const Color(0xFF0083B0)],
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(18)),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(18),
+                        ),
                       ),
                       padding: const EdgeInsets.all(10),
                       child: Center(
@@ -144,18 +146,18 @@ class _SiginPageState extends State<SiginPage> {
                               }
                             }
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign In ->",
                             style: TextStyle(fontSize: 25, color: Colors.white),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "Don't have an account?",
                           style: TextStyle(color: Colors.white70),
                         ),

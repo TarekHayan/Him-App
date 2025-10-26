@@ -21,14 +21,16 @@ class TypeUser extends StatelessWidget {
         width: 140,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: isSelected ? Color(0xff13b6a7) : Colors.white.withOpacity(0.1),
+          color: isSelected
+              ? const Color(0xff13b6a7)
+              : Colors.white.withOpacity(0.1),
         ),
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             typeIcon,
-            Text(typeName, style: TextStyle(color: Colors.white)),
+            Text(typeName, style: const TextStyle(color: Colors.white)),
           ],
         ),
       ),

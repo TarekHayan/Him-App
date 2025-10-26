@@ -31,13 +31,13 @@ class _SwitchTypeUserState extends State<SwitchTypeUser> {
       children: [
         TypeUser(
           typeName: 'Student',
-          typeIcon: Icon(Icons.people_alt_outlined, color: Colors.white),
+          typeIcon: const Icon(Icons.people_alt_outlined, color: Colors.white),
           isSelected: selected == 0,
           onTap: () => selectUser(0),
         ),
         TypeUser(
           typeName: 'Doctor',
-          typeIcon: Icon(Icons.person_2_outlined, color: Colors.white),
+          typeIcon: const Icon(Icons.person_2_outlined, color: Colors.white),
           isSelected: selected == 1,
           onTap: () => selectUser(1),
         ),
