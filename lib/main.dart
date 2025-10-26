@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:him_app/screens/login_page.dart';
+import 'package:him_app/screens/sigin_in_page.dart';
 import 'package:him_app/screens/sigin_up_page.dart';
 
 void main() {
@@ -13,9 +13,9 @@ class HimApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'LoginPage',
+      initialRoute: 'SiginPage',
       routes: {
-        'LoginPage': (context) => LoginPage(),
+        'SiginPage': (context) => SiginPage(),
         SiginUpPage.id: (context) => SiginUpPage(),
       },
     );

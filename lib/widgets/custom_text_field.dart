@@ -7,13 +7,16 @@ class CustomTextField extends StatelessWidget {
     required this.name,
     required this.iconData,
     required this.controller,
+    required this.obscureText,
   });
   final String name;
   final IconData iconData;
   final TextEditingController controller;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscureText,
       style: TextStyle(color: Colors.white),
       cursorColor: Colors.white,
       controller: controller,

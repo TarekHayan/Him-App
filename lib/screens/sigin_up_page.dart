@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:him_app/consts/colors.dart';
+import 'package:him_app/helper/show_snak_bar.dart';
+import 'package:him_app/screens/sigin_in_page.dart';
 import 'package:him_app/widgets/custom_text_field.dart';
 import 'package:him_app/widgets/switch_type_user.dart';
 
-class SiginUpPage extends StatelessWidget {
-  SiginUpPage({super.key});
+class SiginUpPage extends StatefulWidget {
+  const SiginUpPage({super.key});
   static String id = 'SiginUpPage';
+
+  @override
+  State<SiginUpPage> createState() => _SiginUpPageState();
+}
+
+class _SiginUpPageState extends State<SiginUpPage> {
   final _formKey = GlobalKey<FormState>();
+
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
   final TextEditingController confirmpasswordController =
       TextEditingController();
+
+  final bool showPass = false;
+
+  String? selectedRole;
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: (Scaffold(
+      child: Scaffold(
         backgroundColor: kpcolor,
         body: Center(
           child: SingleChildScrollView(
@@ -51,7 +66,7 @@ class SiginUpPage extends StatelessWidget {
                     ),
                     SizedBox(height: 30),
                     Align(
-                      alignment: AlignmentGeometry.topLeft,
+                      alignment: Alignment.topLeft,
                       child: Text(
                         'Select your role',
                         style: TextStyle(color: Colors.white70),
@@ -60,11 +75,17 @@ class SiginUpPage extends StatelessWidget {
                     SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: SwitchTypeUser(),
+                      child: SwitchTypeUser(
+                        onSelected: (value) {
+                          setState(() {
+                            selectedRole = value;
+                          });
+                        },
+                      ),
                     ),
                     SizedBox(height: 30),
                     Align(
-                      alignment: AlignmentGeometry.topLeft,
+                      alignment: Alignment.topLeft,
                       child: Text(
                         'Email Address',
                         style: TextStyle(color: Colors.white),
@@ -72,13 +93,14 @@ class SiginUpPage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     CustomTextField(
+                      obscureText: showPass,
                       controller: emailController,
                       name: 'Enter your email',
                       iconData: Icons.email_outlined,
                     ),
                     SizedBox(height: 30),
                     Align(
-                      alignment: AlignmentGeometry.topLeft,
+                      alignment: Alignment.topLeft,
                       child: Text(
                         'Password',
                         style: TextStyle(color: Colors.white),
@@ -86,9 +108,10 @@ class SiginUpPage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     CustomTextField(
+                      obscureText: !showPass,
                       controller: passwordController,
                       name: 'Enter your password',
-                      iconData: Icons.remove_red_eye_outlined,
+                      iconData: Icons.lock_outline,
                     ),
                     SizedBox(height: 30),
                     Align(
@@ -100,13 +123,13 @@ class SiginUpPage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     CustomTextField(
+                      obscureText: !showPass,
                       controller: confirmpasswordController,
                       name: 'Confirm password',
-                      iconData: Icons.remove_red_eye_outlined,
+                      iconData: Icons.lock_outline_rounded,
                     ),
-                    SizedBox(height: 10),
                     Align(
-                      alignment: AlignmentGeometry.topRight,
+                      alignment: Alignment.topRight,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
@@ -115,34 +138,33 @@ class SiginUpPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Container(
                       width: double.infinity,
                       height: 65,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Color(0xff13b6a7), Color(0xFF0083B0)],
+                          colors: [kscolor, Color(0xFF0083B0)],
                         ),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(18),
-                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(18)),
                       ),
                       padding: const EdgeInsets.all(10),
                       child: Center(
                         child: GestureDetector(
                           onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              print("sigin up done");
+                            if (selectedRole == null) {
+                              showSnackBar(
+                                context,
+                                msg: 'please select your role',
+                              );
+                            } else {
+                              if (_formKey.currentState!.validate()) {
+                                print("sigin up done");
+                              }
                             }
                           },
-                          child: Center(
-                            child: const Text(
-                              "Sign Up ->",
-                              style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                              ),
-                            ),
+                          child: Text(
+                            "Sign Up ->",
+                            style: TextStyle(fontSize: 25, color: Colors.white),
                           ),
                         ),
                       ),
@@ -152,7 +174,7 @@ class SiginUpPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "You have an account ?",
+                          "Don't have an account?",
                           style: TextStyle(color: Colors.white70),
                         ),
                         TextButton(
@@ -160,9 +182,9 @@ class SiginUpPage extends StatelessWidget {
                             Navigator.pop(context);
                           },
                           child: Text(
-                            "Sigin In",
+                            "Sign In",
                             style: TextStyle(
-                              color: Color(0xff13b6a7),
+                              color: kscolor,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
@@ -176,7 +198,7 @@ class SiginUpPage extends StatelessWidget {
             ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

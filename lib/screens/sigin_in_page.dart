@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:him_app/consts/colors.dart';
+import 'package:him_app/helper/show_snak_bar.dart';
 import 'package:him_app/screens/sigin_up_page.dart';
 import 'package:him_app/widgets/custom_text_field.dart';
 import 'package:him_app/widgets/switch_type_user.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class SiginPage extends StatefulWidget {
+  SiginPage({super.key});
+
+  @override
+  State<SiginPage> createState() => _SiginPageState();
+}
+
+class _SiginPageState extends State<SiginPage> {
   final _formKey = GlobalKey<FormState>();
+
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
+  final bool showPass = false;
+
+  String? selectedRole;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +71,13 @@ class LoginPage extends StatelessWidget {
                     SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: SwitchTypeUser(),
+                      child: SwitchTypeUser(
+                        onSelected: (value) {
+                          setState(() {
+                            selectedRole = value;
+                          });
+                        },
+                      ),
                     ),
                     SizedBox(height: 30),
                     Align(
@@ -70,6 +89,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     CustomTextField(
+                      obscureText: showPass,
                       controller: emailController,
                       name: 'Enter your email',
                       iconData: Icons.email_outlined,
@@ -84,9 +104,10 @@ class LoginPage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     CustomTextField(
+                      obscureText: !showPass,
                       controller: passwordController,
                       name: 'Enter your password',
-                      iconData: Icons.remove_red_eye_outlined,
+                      iconData: Icons.lock_outline,
                     ),
                     SizedBox(height: 10),
                     Align(
@@ -104,7 +125,7 @@ class LoginPage extends StatelessWidget {
                       height: 65,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Color(0xff13b6a7), Color(0xFF0083B0)],
+                          colors: [kscolor, Color(0xFF0083B0)],
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(18)),
                       ),
@@ -112,8 +133,15 @@ class LoginPage extends StatelessWidget {
                       child: Center(
                         child: GestureDetector(
                           onTap: () {
-                            if (_formKey.currentState!.validate()) {
-                              print("login done");
+                            if (selectedRole == null) {
+                              showSnackBar(
+                                context,
+                                msg: 'please select your role',
+                              );
+                            } else {
+                              if (_formKey.currentState!.validate()) {
+                                print("login done");
+                              }
                             }
                           },
                           child: Text(
@@ -138,7 +166,7 @@ class LoginPage extends StatelessWidget {
                           child: Text(
                             "Sign Up",
                             style: TextStyle(
-                              color: Color(0xff13b6a7),
+                              color: kscolor,
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
