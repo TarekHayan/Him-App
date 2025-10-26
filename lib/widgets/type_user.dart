@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TypeUser extends StatelessWidget {
   const TypeUser({
@@ -17,8 +18,8 @@ class TypeUser extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        height: 80,
-        width: 140,
+        height: 80.h,
+        width: 120.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: isSelected

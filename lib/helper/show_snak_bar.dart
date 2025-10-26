@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:him_app/consts/colors.dart';
 
 void showSnackBar(BuildContext context, {required String msg}) {
@@ -6,7 +7,7 @@ void showSnackBar(BuildContext context, {required String msg}) {
     SnackBar(
       content: Text(
         msg,
-        style: const TextStyle(color: Colors.white, fontSize: 20),
+        style: TextStyle(color: Colors.white, fontSize: 20.sp),
       ),
       backgroundColor: kscolor,
     ),

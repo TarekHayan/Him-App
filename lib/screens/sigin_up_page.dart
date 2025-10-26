@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:him_app/consts/colors.dart';
 import 'package:him_app/helper/show_snak_bar.dart';
 import 'package:him_app/widgets/custom_text_field.dart';
@@ -35,7 +36,7 @@ class _SiginUpPageState extends State<SiginUpPage> {
         body: Center(
           child: SingleChildScrollView(
             child: Container(
-              width: 350,
+              width: 350.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: Colors.white70),
@@ -47,23 +48,23 @@ class _SiginUpPageState extends State<SiginUpPage> {
                   children: [
                     Image.asset(
                       "assets/images/photo_2025-10-24_22-31-54-removebg.png",
-                      width: 180,
-                      height: 140,
+                      width: 150.w,
+                      height: 120.h,
                     ),
-                    const Text(
+                    Text(
                       "HIGHER INSTITUTE OF MANAGMENT",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     const Text(
                       'Sign in to your account',
                       style: TextStyle(color: Colors.white70),
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: 20.h),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -71,7 +72,7 @@ class _SiginUpPageState extends State<SiginUpPage> {
                         style: TextStyle(color: Colors.white70),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: SwitchTypeUser(
@@ -82,7 +83,7 @@ class _SiginUpPageState extends State<SiginUpPage> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: 20.h),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -90,14 +91,14 @@ class _SiginUpPageState extends State<SiginUpPage> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     CustomTextField(
                       obscureText: showPass,
                       controller: emailController,
                       name: 'Enter your email',
                       iconData: Icons.email_outlined,
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: 20.h),
                     const Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -105,14 +106,14 @@ class _SiginUpPageState extends State<SiginUpPage> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     CustomTextField(
                       obscureText: !showPass,
                       controller: passwordController,
                       name: 'Enter your password',
                       iconData: Icons.lock_outline,
                     ),
-                    const SizedBox(height: 30),
+                    SizedBox(height: 20.h),
                     const Align(
                       alignment: AlignmentGeometry.topLeft,
                       child: Text(
@@ -120,7 +121,7 @@ class _SiginUpPageState extends State<SiginUpPage> {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     CustomTextField(
                       obscureText: !showPass,
                       controller: confirmpasswordController,
@@ -139,7 +140,7 @@ class _SiginUpPageState extends State<SiginUpPage> {
                     ),
                     Container(
                       width: double.infinity,
-                      height: 65,
+                      height: 50.h,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [kscolor, const Color(0xFF0083B0)],
@@ -163,14 +164,18 @@ class _SiginUpPageState extends State<SiginUpPage> {
                               }
                             }
                           },
-                          child: const Text(
+                          child: Text(
                             "Sign Up ->",
-                            style: TextStyle(fontSize: 25, color: Colors.white),
+                            style: TextStyle(
+                              fontSize: 15.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 10.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -182,12 +187,14 @@ class _SiginUpPageState extends State<SiginUpPage> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Text(
-                            "Sign In",
-                            style: TextStyle(
-                              color: kscolor,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
+                          child: Center(
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                color: kscolor,
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
